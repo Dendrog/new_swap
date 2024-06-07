@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 20:31:21 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/08 06:54:58 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/08 07:19:29 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,7 @@ void	sort(t_stack *a, t_stack *b, int size)
 	int	i;
 	int p1;
 	int p2;
+	int	count;
 
 	i = 0;
 	r = 0;
@@ -231,52 +232,64 @@ void	sort(t_stack *a, t_stack *b, int size)
 		return ;
 	}
 	search_pivot(a, size, &p1, &p2);
+	count = 0;
 	while (i < size)
 	{
 		if (a->stack[0] <= p1)
 		{
+			while (count)
+			{
+				rb(b);
+				count--;
+			}
 			pb(a, b);
-			//rb(b);
 			s++;
 		}
 		else if (a->stack[0] <= p2)
 		{
 			pb(a, b);
-			rb(b);
+			count++;
+			//rb(b);
 			m++;
 		}
 		else
 		{
-			ra(a);
+			if (count)
+			{
+				rr(a, b);
+				count--;
+			}
+			else
+				ra(a);
 			r++;
 		}
 		i++;
+	}
+	while (count)
+	{
+		rb(b);
+		count--;
 	}
 	i = 0;
 	if (a->size != r)
 	{
 		while (i < r)
 		{
-			rra(a);
+			if (i < m)
+				rrr(a, b);
+			else
+				rra(a);
 			i++;
 		}
 	}
 	sort(a, b, r);
-	i = 0;
+	//i = 0;
 	while (i < m)
 	{
 		rrb(b);
-		//pa(a, b);
 		i++;
 	}
 	sort_b(a, b, m);
-	i = 0;
-	/*while (i < s)
-	{
-		//rrb(b);
-		pa(a, b);
-		i++;
-	}*/
 	sort_b(a, b, s);
 }
 
@@ -288,6 +301,7 @@ void	sort_b(t_stack *a, t_stack *b, int size)
 	int	i;
 	int p1;
 	int p2;
+	int	count;
 
 	i = 0;
 	r = 0;
@@ -304,67 +318,59 @@ void	sort_b(t_stack *a, t_stack *b, int size)
 		return ;
 	}
 	search_pivot(b, size, &p1, &p2);
+	count = 0;
 	while (i < size)
 	{
 		if (b->stack[0] <= p1)
 		{
-			rb(b);
+			if (count)
+			{
+				rr(a, b);
+				count--;
+			}
+			else
+				rb(b);
 			s++;
 		}
 		else if (b->stack[0] <= p2)
 		{
 			pa(a, b);
-			ra(a);
+			count++;
+			//ra(a);
 			m++;
 		}
 		else
 		{
+			while (count)
+			{
+				ra(a);
+				count--;
+			}
 			pa(a, b);
-			//ra(a);
 			r++;
 		}
 		i++;
 	}
-	i = 0;
-	/*if (b->size != r)
+	while (count)
 	{
-		while (i < r)
-		{
-			rrb(b);
-			i++;
-		}
-	}*/
+		ra(a);
+		count--;
+	}
+	i = 0;
 	sort(a, b, r);
 	i = 0;
 	while (i < m)
 	{
-		rra(a);
+		if (i < s)
+			rrr(a, b);
+		else
+			rra(a);
 		i++;
 	}
 	sort(a, b, m);
-	/*if (s != a->size)
-	{
-		while (i < s)
-		{
-			rra(a);
-			//pa(a, b);
-			i++;
-		}
-	}*/
-	/*else
-	{
-		while (i < s)
-		{
-			rrb(b);
-			pa(a, b);
-			i++;
-		}
-	}*/
-	i = 0;
 	while (i < s)
 	{
 		rrb(b);
-		//pa(a, b);
 		i++;
 	}
 	sort_b(a, b, s);
