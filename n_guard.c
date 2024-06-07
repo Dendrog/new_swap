@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   n_guard.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:33:15 by jakim             #+#    #+#             */
-/*   Updated: 2024/05/31 21:04:00 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/08 07:28:49 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	null_guard(int	*ptr)
 
 void	er(void)
 {
-	ft_printf("Error\n");
+	//ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	exit(1);
 }
 

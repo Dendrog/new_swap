@@ -6,13 +6,26 @@
 /*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 20:31:21 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/08 07:19:29 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/08 07:46:37 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-static int	is_sorted(t_stack *a)
+int	is_sorted(t_stack *a)
+{
+	int	i;
+
+	i = 0;
+	while (i < (a->size - 1))
+	{
+		if (a->stack[i] > a->stack[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	is_sorted_b(t_stack *a)
 {
 	int	i;
 
@@ -24,7 +37,7 @@ static int	is_sorted(t_stack *a)
 		i++;
 	}
 	return (1);
-}*/
+}
 
 static t_stack	*stack_cpy(t_stack *a, int size)
 {
@@ -233,6 +246,8 @@ void	sort(t_stack *a, t_stack *b, int size)
 	}
 	search_pivot(a, size, &p1, &p2);
 	count = 0;
+	if (is_sorted(a))
+		return ;
 	while (i < size)
 	{
 		if (a->stack[0] <= p1)
@@ -310,6 +325,15 @@ void	sort_b(t_stack *a, t_stack *b, int size)
 	if (size <= 3)
 	{
 		mini_sort_b(b, size);
+		while (size > 0)
+		{
+			pa(a, b);
+			size--;
+		}
+		return ;
+	}
+	if (is_sorted_b(b))
+	{
 		while (size > 0)
 		{
 			pa(a, b);
