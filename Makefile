@@ -8,7 +8,12 @@ SRCS =  main.c\
 		oper_push.c\
 		oper_rotate.c\
 		oper_reverse.c\
-		sort.c
+		sort.c\
+		utils2.c\
+		a_sort.c\
+		b_sort.c\
+		a_sort2.c\
+		b_sort2.c
 
 LIB = libft/libft.a\
 		ft_printf/libftprintf.a\
@@ -18,7 +23,6 @@ HEADR = push_swap.h
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
-
 OBJS = $(SRCS:.c=.o)
 
 all: $(LIB) $(NAME)

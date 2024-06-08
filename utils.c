@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:51:40 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/08 16:30:53 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/08 22:34:45 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	lstclear(t_output **lst)
 {
 	t_output	*ptr;
 	t_output	*tmp;
+
 	ptr = *lst;
 	if (!*lst || !lst)
 		return ;

@@ -6,98 +6,86 @@
 /*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:59:04 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/08 17:56:45 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/08 23:14:21 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static int	oper_cmp(t_output **out, char *str1, char *str2)
+{
+	t_output	*ptr;
+
+	ptr = *out;
+	if ((!ft_strncmp(ptr->str, str1, 4) \
+	&& !ft_strncmp(ptr->next->str, str2, 4)) \
+		|| (!ft_strncmp(ptr->str, str2, 4) \
+		&& !ft_strncmp(ptr->next->str, str1, 4)))
+	{
+		return (1);
+	}
+	else
+		return (0);
+}
+
+static void	remove(t_output **out)
+{
+	t_output	*tmp;
+
+	tmp = *out;
+	if ((*out)->prev)
+	{
+		(*out) = (*out)->prev;
+		(*out)->next = (*out)->next->next->next;
+		if ((*out)->next)
+			(*out)->next->prev = (*out);
+	}
+	else
+	{
+		(*out) = (*out)->next->next;
+		if ((*out))
+			(*out)->prev = (*out)->prev->prev->prev;
+	}
+	free(tmp->next);
+	free(tmp);
+}
+
+static void	change(t_output **out, char *str)
+{
+	t_output	*tmp;
+
+	tmp = (*out)->next;
+	(*out)->next = (*out)->next->next;
+	if ((*out)->next)
+		(*out)->next->prev = (*out);
+	(*out)->str = str;
+	free(tmp);
+}
+
 static void	opti(t_output **out)
 {
 	t_output	*ptr;
-	t_output	*tmp;
 
 	if (!out ||!*out)
 		return ;
 	ptr = *out;
 	while (ptr->next && ptr)
 	{
-		if ((!ft_strncmp(ptr->str, "pa", 4) && !ft_strncmp(ptr->next->str, "pb", 4)) || (!ft_strncmp(ptr->str, "pb", 4) && !ft_strncmp(ptr->next->str, "pa", 4)) \
-		|| (!ft_strncmp(ptr->str, "ra", 4) && !ft_strncmp(ptr->next->str, "rra", 4)) || (!ft_strncmp(ptr->str, "rra", 4) && !ft_strncmp(ptr->next->str, "ra", 4)) \
-		|| (!ft_strncmp(ptr->str, "rb", 4) && !ft_strncmp(ptr->next->str, "rrb", 4)) || (!ft_strncmp(ptr->str, "rrb", 4) && !ft_strncmp(ptr->next->str, "rb", 4)) \
-		|| (!ft_strncmp(ptr->str, "rr", 4) && !ft_strncmp(ptr->next->str, "rrr", 4)) || (!ft_strncmp(ptr->str, "rrr", 4) && !ft_strncmp(ptr->next->str, "rr", 4)))
-		{
-			tmp = ptr;
-			if (ptr->prev)
-			{
-				ptr = ptr->prev;
-				ptr->next = ptr->next->next->next;
-				if (ptr->next)
-					ptr->next->prev = ptr;
-			}
-			else
-			{
-				ptr = ptr->next->next;
-				if (ptr)
-					ptr->prev = ptr->prev->prev->prev;
-			}
-			free(tmp->next);
-			free(tmp);
-		}
-		else if ((!ft_strncmp(ptr->str, "ra", 4) && !ft_strncmp(ptr->next->str, "rb", 4)) || (!ft_strncmp(ptr->str, "rb", 4) && !ft_strncmp(ptr->next->str, "ra", 4)))
-		{
-			tmp = ptr->next;
-			ptr->next = ptr->next->next;
-			if (ptr->next)
-					ptr->next->prev = ptr;
-			ptr->str = "rr";
-			free(tmp);
-		}
-		else if ((!ft_strncmp(ptr->str, "rra", 4) && !ft_strncmp(ptr->next->str, "rrb", 4)) || (!ft_strncmp(ptr->str, "rrb", 4) && !ft_strncmp(ptr->next->str, "rra", 4)))
-		{
-			tmp = ptr->next;
-			ptr->next = ptr->next->next;
-			if (ptr->next)
-					ptr->next->prev = ptr;
-			ptr->str = "rrr";
-			free(tmp);
-		}
-		else if ((!ft_strncmp(ptr->str, "rr", 4) && !ft_strncmp(ptr->next->str, "rrb", 4)) || (!ft_strncmp(ptr->str, "rrb", 4) && !ft_strncmp(ptr->next->str, "rr", 4)))
-		{
-			tmp = ptr->next;
-			ptr->next = ptr->next->next;
-			if (ptr->next)
-					ptr->next->prev = ptr;
-			ptr->str = "ra";
-			free(tmp);
-		}
-		else if ((!ft_strncmp(ptr->str, "rr", 4) && !ft_strncmp(ptr->next->str, "rra", 4)) || (!ft_strncmp(ptr->str, "rra", 4) && !ft_strncmp(ptr->next->str, "rr", 4)))
-		{
-			tmp = ptr->next;
-			ptr->next = ptr->next->next;
-			if (ptr->next)
-					ptr->next->prev = ptr;
-			ptr->str = "rb";
-			free(tmp);
-		}
-		else if ((!ft_strncmp(ptr->str, "rrr", 4) && !ft_strncmp(ptr->next->str, "rb", 4)) || (!ft_strncmp(ptr->str, "rb", 4) && !ft_strncmp(ptr->next->str, "rrr", 4)))
-		{
-			tmp = ptr->next;
-			ptr->next = ptr->next->next;
-			if (ptr->next)
-					ptr->next->prev = ptr;
-			ptr->str = "rra";
-			free(tmp);
-		}
-		else if ((!ft_strncmp(ptr->str, "rrr", 4) && !ft_strncmp(ptr->next->str, "ra", 4)) || (!ft_strncmp(ptr->str, "ra", 4) && !ft_strncmp(ptr->next->str, "rrr", 4)))
-		{
-			tmp = ptr->next;
-			ptr->next = ptr->next->next;
-			if (ptr->next)
-					ptr->next->prev = ptr;
-			ptr->str = "rrb";
-			free(tmp);
-		}
+		if (oper_cmp(&ptr, "pa", "pb") || oper_cmp(&ptr, "ra", "rra") \
+		|| oper_cmp(&ptr, "rb", "rrb") || oper_cmp(&ptr, "rr", "rrr"))
+			remove(&ptr);
+		else if (oper_cmp(&ptr, "ra", "rb"))
+			change(&ptr, "rr");
+		else if (oper_cmp(&ptr, "rra", "rrb"))
+			change(&ptr, "rrr");
+		else if (oper_cmp(&ptr, "rr", "rrb"))
+			change(&ptr, "ra");
+		else if (oper_cmp(&ptr, "rr", "rra"))
+			change(&ptr, "rb");
+		else if (oper_cmp(&ptr, "rrr", "rb"))
+			change(&ptr, "rra");
+		else if (oper_cmp(&ptr, "rrr", "ra"))
+			change(&ptr, "rrb");
 		else
 			ptr = ptr->next;
 	}	
@@ -105,10 +93,9 @@ static void	opti(t_output **out)
 
 int	main(int argc, char *argv[])
 {
-	t_stack	a;
-	t_stack	b;
-	t_output *head;
-	t_output *ptr;
+	t_stack		a;
+	t_stack		b;
+	t_output	*head;
 
 	head = NULL;
 	if (argc < 2)
@@ -126,12 +113,7 @@ int	main(int argc, char *argv[])
 	if (!is_sorted(&a))
 		sort(&a, &b, a.size, &head);
 	opti(&head);
-	ptr = head;
-	while(ptr)
-	{
-		ft_printf("%s\n",ptr->str);
-		ptr = ptr->next;
-	}
+	print_oper(head);
 	free(b.stack);
 	free(a.stack);
 	lstclear(&head);

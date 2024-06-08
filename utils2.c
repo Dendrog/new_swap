@@ -1,53 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   n_guard.c                                          :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 15:33:15 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/08 22:32:11 by jakim            ###   ########.fr       */
+/*   Created: 2024/06/08 22:44:54 by jakim             #+#    #+#             */
+/*   Updated: 2024/06/09 00:05:30 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	null_guard(int	*ptr)
+void	swap_value(int *a, int *b)
 {
-	if (!ptr)
-		exit(1);
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-void	er(void)
+void	set_vars(t_var *vars, int size)
 {
-	write(2, "Error\n", 6);
-	exit(1);
-}
-
-void	dup_check(t_stack *a)
-{
-	int	i;
-	int	k;
-
-	i = 0;
-	while (i < a->size)
-	{
-		k = i + 1;
-		while (k < a->size)
-		{
-			if (a->stack[i] == a->stack[k])
-				er();
-			k++;
-		}
-		i++;
-	}
-}
-
-void	print_oper(t_output *ptr)
-{
-	while (ptr)
-	{
-		ft_printf("%s\n", ptr->str);
-		ptr = ptr->next;
-	}
+	vars->r = 0;
+	vars->s = 0;
+	vars->m = 0;
+	vars->count = 0;
+	vars->size = size;
 }

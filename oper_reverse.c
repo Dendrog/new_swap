@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 01:52:20 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/08 15:53:44 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/08 18:19:46 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,12 @@ void	rra(t_stack *a, t_output **out)
 {
 	reverse(a);
 	lstadd_back(out, lstnew("rra"));
-	//ft_printf("rra\n");
 }
 
 void	rrb(t_stack *b, t_output **out)
 {
 	reverse(b);
 	lstadd_back(out, lstnew("rrb"));
-	//ft_printf("rrb\n");
 }
 
 void	rrr(t_stack *a, t_stack *b, t_output **out)
@@ -44,5 +42,4 @@ void	rrr(t_stack *a, t_stack *b, t_output **out)
 	reverse(a);
 	reverse(b);
 	lstadd_back(out, lstnew("rrr"));
-	//ft_printf("rrr\n");
 }
