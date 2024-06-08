@@ -48,7 +48,7 @@ BONUS =		ft_lstnew.c \
 HEADR = libft.h
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 OBJS = $(SRCS:.c=.o)
 BOBJS = $(BONUS:.c=.o)

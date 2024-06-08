@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 20:31:21 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/08 07:46:37 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/08 17:32:43 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,14 @@ static void	search_pivot(t_stack *st, int size, int *p1, int *p2)
 	free(a);
 }
 
-static void	mini_sort(t_stack *a, int size)
+static void	mini_sort(t_stack *a, int size, t_output **out)
 {
 	if (size == 1)
 		return ;
 	else if (size == 2)
 	{
 		if (a->stack[0] > a->stack[1])
-			sa(a);
+			sa(a, out);
 	}
 	else if (size == 3)
 	{
@@ -102,66 +102,65 @@ static void	mini_sort(t_stack *a, int size)
 		{
 			if (a->stack[0] < a->stack[1] && a->stack[0] < a->stack[2] && a->stack[1] > a->stack[2])
 			{
-				ra(a);
-				sa(a);
-				rra(a);
+				rra(a, out);
+				sa(a, out);
 			}
 			else if (a->stack[0] > a->stack[1] && a->stack[0] < a->stack[2] && a->stack[1] < a->stack[2])
-				sa(a);
+				sa(a, out);
 			else if (a->stack[0] < a->stack[1] && a->stack[0] > a->stack[2] && a->stack[1] > a->stack[2])
-				rra(a);
+				rra(a, out);
 			else if (a->stack[0] > a->stack[1] && a->stack[0] > a->stack[2] && a->stack[1] < a->stack[2])
-				ra(a);
+				ra(a, out);
 			else if (a->stack[0] > a->stack[1] && a->stack[0] > a->stack[2] && a->stack[1] > a->stack[2])
 			{
-				ra(a);
-				sa(a);
+				ra(a, out);
+				sa(a, out);
 			}
 		}
 		else
 		{
 			if (a->stack[0] < a->stack[1] && a->stack[0] < a->stack[2] && a->stack[1] > a->stack[2])
 			{
-				ra(a);
-				sa(a);
-				rra(a);
+				ra(a, out);
+				sa(a, out);
+				rra(a, out);
 			}
 			else if (a->stack[0] > a->stack[1] && a->stack[0] < a->stack[2] && a->stack[1] < a->stack[2])
-				sa(a);
+				sa(a, out);
 			else if (a->stack[0] < a->stack[1] && a->stack[0] > a->stack[2] && a->stack[1] > a->stack[2])
 			{
-				ra(a);
-				sa(a);
-				rra(a);
-				sa(a);
+				ra(a, out);
+				sa(a, out);
+				rra(a, out);
+				sa(a, out);
 			}
 			else if (a->stack[0] > a->stack[1] && a->stack[0] > a->stack[2] && a->stack[1] < a->stack[2])
 			{
-				sa(a);
-				ra(a);
-				sa(a);
-				rra(a);
+				sa(a, out);
+				ra(a, out);
+				sa(a, out);
+				rra(a, out);
 			}
 			else if (a->stack[0] > a->stack[1] && a->stack[0] > a->stack[2] && a->stack[1] > a->stack[2])
 			{
-				sa(a);
-				ra(a);
-				sa(a);
-				rra(a);
-				sa(a);
+				sa(a, out);
+				ra(a, out);
+				sa(a, out);
+				rra(a, out);
+				sa(a, out);
 			}
 		}
 	}
 }
 
-static void	mini_sort_b(t_stack *a, int size)
+static void	mini_sort_b(t_stack *a, int size, t_output **out)
 {
 	if (size == 1)
 		return ;
 	else if (size == 2)
 	{
 		if (a->stack[0] < a->stack[1])
-			sb(a);
+			sb(a, out);
 	}
 	else if (size == 3)
 	{
@@ -169,63 +168,62 @@ static void	mini_sort_b(t_stack *a, int size)
 		{
 			if (a->stack[0] < a->stack[1] && a->stack[0] < a->stack[2] && a->stack[1] < a->stack[2])
 			{
-				rb(a);
-				sb(a);
+				rb(a, out);
+				sb(a, out);
 			}
 			else if (a->stack[0] < a->stack[1] && a->stack[0] < a->stack[2] && a->stack[1] > a->stack[2])
 			{
-				rb(a);
+				rb(a, out);
 			}
 			else if (a->stack[0] > a->stack[1] && a->stack[0] < a->stack[2] && a->stack[1] < a->stack[2])
-				rrb(a);
+				rrb(a, out);
 			else if (a->stack[0] < a->stack[1] && a->stack[0] > a->stack[2] && a->stack[1] > a->stack[2])
-				sb(a);
+				sb(a, out);
 			else if (a->stack[0] > a->stack[1] && a->stack[0] > a->stack[2] && a->stack[1] < a->stack[2])
 			{
-				rb(a);
-				sb(a);
-				rrb(a);
+				rrb(a, out);
+				sb(a, out);
 			}
 		}
 		else
 		{
 			if (a->stack[0] < a->stack[1] && a->stack[0] < a->stack[2] && a->stack[1] < a->stack[2])
 			{
-				sb(a);
-				rb(a);
-				sb(a);
-				rrb(a);
-				sb(a);
+				sb(a, out);
+				rb(a, out);
+				sb(a, out);
+				rrb(a, out);
+				sb(a, out);
 			}
 			else if (a->stack[0] < a->stack[1] && a->stack[0] < a->stack[2] && a->stack[1] > a->stack[2])
 			{
-				sb(a);
-                rb(a);
-                sb(a);
-                rrb(a);
+				sb(a, out);
+                rb(a, out);
+                sb(a, out);
+                rrb(a, out);
 			}
 			else if (a->stack[0] > a->stack[1] && a->stack[0] < a->stack[2] && a->stack[1] < a->stack[2])
 			{
-				rb(a);
-                sb(a);
-                rrb(a);
-                sb(a);
+				rb(a, out);
+                sb(a, out);
+                rrb(a, out);
+                sb(a, out);
 			}
 			else if (a->stack[0] < a->stack[1] && a->stack[0] > a->stack[2] && a->stack[1] > a->stack[2])
 			{
-				sb(a);
+				sb(a, out);
 			}
 			else if (a->stack[0] > a->stack[1] && a->stack[0] > a->stack[2] && a->stack[1] < a->stack[2])
 			{
-				rb(a);
-                sb(a);
-                rrb(a);
+				rb(a, out);
+                sb(a, out);
+                rrb(a, out);
 			}
 		}
 	}
 }
 
-void	sort(t_stack *a, t_stack *b, int size)
+void	sort(t_stack *a, t_stack *b, int size, t_output **out)
 {
 	int	r;
 	int	s;
@@ -241,7 +239,7 @@ void	sort(t_stack *a, t_stack *b, int size)
 	m = 0;
 	if (size <= 3)
 	{
-		mini_sort(a, size);
+		mini_sort(a, size, out);
 		return ;
 	}
 	search_pivot(a, size, &p1, &p2);
@@ -254,15 +252,15 @@ void	sort(t_stack *a, t_stack *b, int size)
 		{
 			while (count)
 			{
-				rb(b);
+				rb(b, out);
 				count--;
 			}
-			pb(a, b);
+			pb(a, b, out);
 			s++;
 		}
 		else if (a->stack[0] <= p2)
 		{
-			pb(a, b);
+			pb(a, b, out);
 			count++;
 			//rb(b);
 			m++;
@@ -271,18 +269,18 @@ void	sort(t_stack *a, t_stack *b, int size)
 		{
 			if (count)
 			{
-				rr(a, b);
+				rr(a, b, out);
 				count--;
 			}
 			else
-				ra(a);
+				ra(a, out);
 			r++;
 		}
 		i++;
 	}
 	while (count)
 	{
-		rb(b);
+		rb(b, out);
 		count--;
 	}
 	i = 0;
@@ -291,24 +289,24 @@ void	sort(t_stack *a, t_stack *b, int size)
 		while (i < r)
 		{
 			if (i < m)
-				rrr(a, b);
+				rrr(a, b, out);
 			else
-				rra(a);
+				rra(a, out);
 			i++;
 		}
 	}
-	sort(a, b, r);
+	sort(a, b, r, out);
 	//i = 0;
 	while (i < m)
 	{
-		rrb(b);
+		rrb(b, out);
 		i++;
 	}
-	sort_b(a, b, m);
-	sort_b(a, b, s);
+	sort_b(a, b, m, out);
+	sort_b(a, b, s, out);
 }
 
-void	sort_b(t_stack *a, t_stack *b, int size)
+void	sort_b(t_stack *a, t_stack *b, int size, t_output **out)
 {
 	int	r;
 	int	s;
@@ -324,10 +322,10 @@ void	sort_b(t_stack *a, t_stack *b, int size)
 	m = 0;
 	if (size <= 3)
 	{
-		mini_sort_b(b, size);
+		mini_sort_b(b, size, out);
 		while (size > 0)
 		{
-			pa(a, b);
+			pa(a, b, out);
 			size--;
 		}
 		return ;
@@ -336,7 +334,7 @@ void	sort_b(t_stack *a, t_stack *b, int size)
 	{
 		while (size > 0)
 		{
-			pa(a, b);
+			pa(a, b, out);
 			size--;
 		}
 		return ;
@@ -349,16 +347,16 @@ void	sort_b(t_stack *a, t_stack *b, int size)
 		{
 			if (count)
 			{
-				rr(a, b);
+				rr(a, b, out);
 				count--;
 			}
 			else
-				rb(b);
+				rb(b, out);
 			s++;
 		}
 		else if (b->stack[0] <= p2)
 		{
-			pa(a, b);
+			pa(a, b, out);
 			count++;
 			//ra(a);
 			m++;
@@ -367,37 +365,37 @@ void	sort_b(t_stack *a, t_stack *b, int size)
 		{
 			while (count)
 			{
-				ra(a);
+				ra(a, out);
 				count--;
 			}
-			pa(a, b);
+			pa(a, b, out);
 			r++;
 		}
 		i++;
 	}
 	while (count)
 	{
-		ra(a);
+		ra(a, out);
 		count--;
 	}
 	i = 0;
-	sort(a, b, r);
+	sort(a, b, r, out);
 	i = 0;
 	while (i < m)
 	{
 		if (i < s)
-			rrr(a, b);
+			rrr(a, b, out);
 		else
-			rra(a);
+			rra(a, out);
 		i++;
 	}
-	sort(a, b, m);
+	sort(a, b, m, out);
 	while (i < s)
 	{
-		rrb(b);
+		rrb(b, out);
 		i++;
 	}
-	sort_b(a, b, s);
+	sort_b(a, b, s, out);
 }
 
 /*static int	search_max(t_stack *a)

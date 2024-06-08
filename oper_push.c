@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:42:27 by jakim             #+#    #+#             */
-/*   Updated: 2024/05/31 21:10:49 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/08 16:28:45 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,16 @@ static void	push(t_stack *a, t_stack *b)
 	b->size--;
 }
 
-void	pa(t_stack *a, t_stack *b)
+void	pa(t_stack *a, t_stack *b, t_output **out)
 {
 	push(a, b);
-	ft_printf("pa\n");
+	lstadd_back(out, lstnew("pa"));
+	//ft_printf("pa\n");
 }
 
-void	pb(t_stack *a, t_stack *b)
+void	pb(t_stack *a, t_stack *b, t_output **out)
 {
 	push(b, a);
-	ft_printf("pb\n");
+	lstadd_back(out, lstnew("pb"));
+	//ft_printf("pb\n");
 }

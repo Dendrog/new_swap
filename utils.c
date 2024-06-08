@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:51:40 by jakim             #+#    #+#             */
-/*   Updated: 2024/05/30 02:29:00 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/08 16:30:53 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,50 @@ char	*ft_atoi2(char *nptr, int	*r)
 		return (NULL);
 	*r = (int)(result * sign);
 	return (nptr);
+}
+
+void	lstadd_back(t_output **lst, t_output *new)
+{
+	t_output	*ptr;
+
+	if (!lst || !new)
+		return ;
+	if (!(*lst))
+	{
+		*lst = new;
+		return ;
+	}
+	ptr = *lst;
+	while (ptr->next)
+		ptr = ptr->next;
+	ptr->next = new;
+	new->prev = ptr;
+}
+
+t_output	*lstnew(char *content)
+{
+	t_output	*ptr;
+
+	ptr = (t_output *)malloc(sizeof(t_output));
+	if (!ptr)
+		return (NULL);
+	ptr->str = content;
+	ptr->next = NULL;
+	ptr->prev = NULL;
+	return (ptr);
+}
+
+void	lstclear(t_output **lst)
+{
+	t_output	*ptr;
+	t_output	*tmp;
+	ptr = *lst;
+	if (!*lst || !lst)
+		return ;
+	while (ptr)
+	{
+		tmp = ptr;
+		ptr = ptr->next;
+		free(tmp);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 17:54:48 by jakim             #+#    #+#             */
-/*   Updated: 2024/05/31 22:17:29 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/08 15:54:49 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,24 @@ static void	swap(t_stack *a)
 	a->stack[1] = tmp;
 }
 
-void	sa(t_stack *a)
+void	sa(t_stack *a, t_output **out)
 {
 	swap(a);
-	ft_printf("sa\n");
+	lstadd_back(out, lstnew("sa"));
+	//ft_printf("sa\n");
 }
 
-void	sb(t_stack *b)
+void	sb(t_stack *b, t_output **out)
 {
 	swap(b);
-	ft_printf("sb\n");
+	lstadd_back(out, lstnew("sb"));
+	//ft_printf("sb\n");
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	ss(t_stack *a, t_stack *b, t_output **out)
 {
 	swap(a);
 	swap(b);
-	ft_printf("ss\n");
+	lstadd_back(out, lstnew("ss"));
+	//ft_printf("ss\n");
 }
