@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   oper_reverse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 01:52:20 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/08 18:19:46 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/11 04:20:19 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	reverse(t_stack *a)
+void	reverse(t_stack *a)
 {
 	int	i;
 

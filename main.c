@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:59:04 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/08 23:14:21 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/11 04:56:11 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void	opti(t_output **out)
 			change(&ptr, "rrb");
 		else
 			ptr = ptr->next;
-	}	
+	}
 }
 
 int	main(int argc, char *argv[])

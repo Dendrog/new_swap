@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   oper_push.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:42:27 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/08 18:19:39 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/11 04:20:20 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_stack *a, t_stack *b)
+void	push(t_stack *a, t_stack *b)
 {
 	int	i;
 

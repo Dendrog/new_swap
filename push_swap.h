@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:14:18 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/09 00:27:12 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/11 04:57:09 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,21 @@
 # include "./ft_printf/ft_printf.h"
 # include "./get_next_line/get_next_line.h"
 
-typedef struct s_stack {
+typedef struct s_stack
+{
 	int	*stack;
 	int	size;
 }				t_stack;
 
-typedef struct s_output {
+typedef struct s_output
+{
 	char			*str;
 	struct s_output	*next;
 	struct s_output	*prev;
 }				t_output;
 
-typedef struct s_var {
+typedef struct s_var
+{
 	int	r;
 	int	s;
 	int	m;
@@ -78,4 +81,9 @@ void		div_type2_b(t_stack *a, t_stack *b, t_var *vars, t_output **out);
 void		div_type3_b(t_stack *a, t_stack *b, t_var *vars, t_output **out);
 void		divide_b(t_stack *a, t_stack *b, t_var *vars, t_output **out);
 int			m_set_b(t_stack *a, t_stack *b, t_var *vars, t_output **out);
+void		push(t_stack *a, t_stack *b);
+void		reverse(t_stack *a);
+void		rotate(t_stack *a);
+void		swap(t_stack *a);
+
 #endif

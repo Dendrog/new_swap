@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   oper_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 17:54:48 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/08 18:20:00 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/11 04:20:18 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_stack *a)
+void	swap(t_stack *a)
 {
 	int	tmp;
 
