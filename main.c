@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:59:04 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/11 04:56:11 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/11 12:31:06 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	main(int argc, char *argv[])
 	head = NULL;
 	if (argc < 2)
 		exit(1);
-	if (argc == 2 && !ft_strlen(argv[1]))
+	if (argc == 2 && (!ft_strlen(argv[1]) || check_space(argv[1])))
 		er();
 	if (argc == 2)
 		a.stack = make_stack_1(argv[1], &a.size);

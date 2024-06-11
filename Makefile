@@ -38,7 +38,7 @@ LIB = libft/libft.a\
 HEADR = push_swap.h
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 OBJS = $(SRCS:.c=.o)
 BOBJS = $(BONUS:.c=.o)
 

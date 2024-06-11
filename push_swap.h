@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:14:18 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/11 04:57:09 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/11 12:26:17 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void		push(t_stack *a, t_stack *b);
 void		reverse(t_stack *a);
 void		rotate(t_stack *a);
 void		swap(t_stack *a);
+int			check_space(char *str);
 
 #endif

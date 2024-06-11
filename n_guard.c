@@ -6,7 +6,7 @@
 /*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:33:15 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/08 22:32:11 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/11 12:31:32 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,15 @@ void	print_oper(t_output *ptr)
 		ft_printf("%s\n", ptr->str);
 		ptr = ptr->next;
 	}
+}
+
+int	check_space(char *str)
+{
+	while (*str)
+	{
+		if (*str != ' ')
+			return (0);
+		str++;
+	}
+	return (1);
 }

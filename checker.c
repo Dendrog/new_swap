@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jakim <jakim@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: jakim <jakim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 04:04:28 by jakim             #+#    #+#             */
-/*   Updated: 2024/06/11 04:57:10 by jakim            ###   ########.fr       */
+/*   Updated: 2024/06/11 12:33:15 by jakim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	main(int argc, char *argv[])
 
 	if (argc < 2)
 		exit(1);
-	if (argc == 2 && !ft_strlen(argv[1]))
+	if (argc == 2 && (!ft_strlen(argv[1]) || check_space(argv[1])))
 		er();
 	if (argc == 2)
 		a.stack = make_stack_1(argv[1], &a.size);
